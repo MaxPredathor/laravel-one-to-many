@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 class Project extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id','title','slug', 'body', 'image', 'technologies'];
+    protected $fillable = ['user_id','title','slug', 'body', 'image', 'technologies', 'category_id'];
 
     public static function getSlug($title)
     {
@@ -24,5 +24,8 @@ class Project extends Model
         }
 
         return $slug;
+    }
+    public function category(){
+        return $this->belongsTo(Category::class);
     }
 }

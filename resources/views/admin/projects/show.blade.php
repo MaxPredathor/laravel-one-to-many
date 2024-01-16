@@ -13,6 +13,11 @@
             @endfor
         </div>
 
+        @if ($project->category)
+            <div>{{ $project->category ? $project->category->name : 'Uncategorized' }}</div>
+        @endif
+
+
         <div>
             <button class="btn btn-primary d-inline-block"><a class="text-white text-decoration-none"
                     href="{{ route('admin.projects.edit', $project->slug) }}">Edit</button>

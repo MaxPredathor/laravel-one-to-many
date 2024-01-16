@@ -26,6 +26,7 @@ class StoreProjectRequest extends FormRequest
             'body' => ['nullable'],
             'image' => ['nullable'],
             'technologies' => ['nullable'],
+            'category_id' => ['nullable', 'exists:categories,id'],
         ];
     }
     public function messages(){

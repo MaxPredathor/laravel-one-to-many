@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -26,8 +27,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        $categories = Category::all();
         $technologies = config('technologies.key');
-        return view('admin.projects.create', compact('technologies'));
+        return view('admin.projects.create', compact('technologies', 'categories'));
     }
 
     /**
@@ -64,8 +66,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+        $categories = Category::all();
         $technologies = config('technologies.key');
-        return view('admin.projects.edit', compact('project', 'technologies'));
+        return view('admin.projects.edit', compact('project', 'technologies', 'categories'));
     }
 
     /**
