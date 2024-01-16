@@ -8,6 +8,7 @@
             @endforeach
         </ul>
 
+
         <div>
             <button class="btn btn-primary d-inline-block"><a class="text-white text-decoration-none"
                     href="{{ route('admin.categories.edit', $category->slug) }}">Edit</button>

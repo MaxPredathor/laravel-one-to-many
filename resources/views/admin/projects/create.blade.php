@@ -20,13 +20,27 @@
                 @enderror
             </div>
             <div>
-                <img id="uploadPreview" src="https://via.placeholder.com/300x200" alt="Placeholder">
+                <img id="uploadPreview" class="w-25" src="https://via.placeholder.com/300x200" alt="Placeholder">
             </div>
             <div class="mb-3">
                 <label for="image">Image</label>
                 <input type="file" class="form-control @error('image') is-invalid @enderror" name="image"
                     id="image">
                 @error('image')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="category_id" class="form-label">Select Category</label>
+                <select class="form-control @error('category_id') is-invalid
+                @enderror" name="category_id"
+                    id="category_id">
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                            {{ $category->name }}</option>
+                    @endforeach
+                </select>
+                @error('category_id')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
