@@ -1,11 +1,16 @@
+@php
+    use GrahamCampbell\Markdown\Facades\Markdown;
+    $markdownContent = $project->body; // La tua stringa Markdown
+    $htmlContent = Markdown::convertToHtml($markdownContent); // Utilizza la libreria di Markdown di Laravel
+@endphp
 @extends('layouts.app')
 @section('content')
-    <section class="container">
+    <section id="markdown-content" class="container">
         <h1>{{ $project->title }}</h1>
-        <p>{!! $project->body !!}</p>
+        <p class="text-white">{!! $htmlContent !!}</p>
         <img class="w-50" src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}">
-        <div>
-            <h4>Technologies:</h4>
+        <div class="my-4">
+            <h4 class="d-inline">Technologies:</h4>
             @for ($i = 0; $i < count($project->technologies); $i++)
                 <div class="d-inline-block m-2 ">
                     <img style="width: 50px" src="{{ $project->technologies[$i] }}" alt="">
@@ -14,7 +19,12 @@
         </div>
 
         @if ($project->category)
-            <div>{{ $project->category ? $project->category->name : 'Uncategorized' }}</div>
+            <div class="my-4">
+                <h4 class="d-inline">Category:</h4>
+                <div class="text-white fs-5 px-3 d-inline">
+                    {{ $project->category ? $project->category->name : 'Uncategorized' }}
+                </div>
+            </div>
         @endif
 
 

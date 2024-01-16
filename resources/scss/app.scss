@@ -16,6 +16,19 @@ h1 {
 i {
     cursor: pointer;
 }
+#markdown-content {
+    p,
+    li {
+        color: white;
+    }
+
+    h2 {
+        color: $text-color;
+    }
+    h3 {
+        color: ghostwhite;
+    }
+}
 
 #app {
     width: 100%;
