@@ -32,7 +32,10 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        $formData = $request->validated();
+        $formData['slug'] = Str::slug($formData['name'], '-');
+        $category = Category::create($formData);
+        return view('admin.categories.show', compact('category'));
     }
 
     /**
@@ -56,7 +59,14 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $formData = $request->validated();
+        if($category->name !== $formData['name']) {
+            $formData['slug'] = Str::slug($formData['name'], '-');
+        }else{
+            $formData['slug'] = $category->slug;
+        }
+        $category->update($formData);
+        return view('admin.categories.show', compact('category'));
     }
 
     /**
@@ -64,6 +74,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return to_route('admin.categories.index')->with('message', "La Category '$category->name' è stata  eliminata");
     }
 }

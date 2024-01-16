@@ -2,7 +2,6 @@
 @section('content')
     <section class="container">
         <h1>{{ $category->name }}</h1>
-        <img class="w-50" src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}">
         <ul>
             @foreach ($category->projects as $project)
                 <li><a href="{{ route('admin.projects.show', $project->slug) }}">{{ $project->title }}</a></li>
