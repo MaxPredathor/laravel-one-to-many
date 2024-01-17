@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-    <section class="container">
-        <h1>Projects List</h1>
+    <section id="projects-index" class="container">
+        <h1 class="mb-4 mt-2">Projects List</h1>
 
         @if (!empty(session('message')))
             <div class="alert alert-success" role="alert">

@@ -86,3 +86,13 @@ i {
         }
     }
 }
+#categories-index,
+#projects-index {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: #2d2e2d;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 40px 0;
+}
